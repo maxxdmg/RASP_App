@@ -1,0 +1,36 @@
+{
+    "RASP_Object": {
+        "id": "abcdefghijklmnopqrstuv",
+        "inputs": {
+            "string_inputs": [
+                {
+                    "input_id": "str1",
+                    "description": "Name"
+                },
+                {
+                    "input_id": "str2",
+                    "description": "Stand"
+                },
+                {
+                    "input_id": "str3",
+                    "description": "Affiliation"
+                }
+            ],
+            "color_inputs": [
+                {
+                    "input_id": "clr1",
+                    "description": "Color"
+                }
+            ],
+            "integer_inputs": [
+            ],
+            "image_inputs": [
+                {
+                    "input_id": "img1",
+                    "description": "Pic",
+                    "value": ""
+                }
+            ]
+        }
+    }
+}

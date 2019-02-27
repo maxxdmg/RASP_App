@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 16px;
+}
+
+*,
+*:after,
+*:before{
+	box-sizing: border-box;
+}
+
+body {
+	font: 100% 'Roboto', arial, sans-serif;
+	background: #fff;
+}
+
+
+.item-container {
+	border: 1px solid black;
+	width: 205px;
+	padding: 10px;
+	margin: 5px;
+}
+
+.item-input {
+
+}
+
+.item-label {
+
+}
+
+.item-input-color-container {
+	width: 150px;
+	height: 27px;
+	display: inline-block;
+}
+
+.item-input-color {
+	width: 30px;
+	padding: 0;
+	border: none;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: 3px;
+}
+
+.item-input-color-text {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0px;
+	margin: 0px
+}
+
+
+
+/* ====== Navigation ====== */
+.toolbar {
+	height: 56px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #333333FF;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	box-sizing: border-box;
+	z-index: 90;
+}
+.toolbar nav {
+	height: 100%;
+}
+.navigation-items {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+.navigation-item {
+	margin: 0;
+	box-sizing: border-box;
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+.navigation-item-content {
+	color: #eee;
+	text-decoration: none;
+	height: 100%;
+	padding: 16px 10px;
+	border-bottom: 4px solid transparent;
+	box-sizing: border-box;
+	display: block;
+}
+
+.navigation-item-content:hover {
+	background-color: #8E8E8EFF;
+	border-bottom: 4px solid #56CC5AC4;
+}
+
+
+/* ====== SideDrawer ====== */
+.SideDrawer {
+	position: fixed;
+	width: 280px;
+	max-width: 70%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 200;
+	background-color: white;
+	padding: 32px 16px;
+	box-sizing: border-box;
+	transition: transform 0.3s ease-out;
+}
+
+@media (min-width: 500px) {
+	.SideDrawer {
+		display: none;
+	}
+}
+
+.Open {
+	transform: translateX(0);
+}
+
+.Close {
+	transform: translateX(-100%);
+}
+
+
+/* ====== Logo ====== */
+
+.logo {
+	background-color: #fff;
+	padding: 4px;
+	height: 100%;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+.logo img {
+	height: 100%;
+	width: 35px;
+}
+
+@me
