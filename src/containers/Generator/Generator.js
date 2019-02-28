@@ -153,10 +153,10 @@ class Generator extends Component {
       }
     });
 
-    let imgVData = [];
+    let imgData = [];
     this.state.inputs.forEach(inp => {
       if (inp.inputType === "IMG")
-        imgData = [...imgValues, this.state[inp.inputName]];
+        imgData = [...imgData, this.state[inp.inputName]];
     });
 
     let error = <div />;
