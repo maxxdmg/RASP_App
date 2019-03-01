@@ -22,7 +22,7 @@ class Save extends Component {
             outputContent += data.inputId + ":#ffffff\n";
           else outputContent += data.inputId + ":\n";
         } else if (data.inputType === "IMG")  outputContent += data.inputId + data.content.name;
-        else outputContent += data.inputId + ":" + data.content + "\n";
+        else outputContent += data.inputId + ":" + data.content + ":\n";
     });
 
     zip.file("output.RASP", outputContent);
