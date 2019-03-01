@@ -1,38 +1,43 @@
 {
-    "RASP_Object": {
-        "id": "abcdefghijklmnopqrstuv",
+	"RASP_Object": {
+		"id": "xxxyxxxx",
 		"inputs": {
-            "string_inputs": [
-                {
-                    "input_id": "str1",
-                    "description": "Name"
-                },
-                {
-                    "input_id": "str2",
-                    "description": "Stand"
-                },
-                {
-                    "input_id": "str3",
-                    "description": "Affiliation"
-                }
-
-            ],
-            "color_inputs": [
-                {
-                    "input_id": "clr1",
-                    "description": "Color"
-                }
-            ],
-            "integer_inputs": [
-            ],
-            "image_inputs": [
-                {
-                    "input_id": "img1",
-                    "description": "Pic",
-                    "value": ""
-                }
-            ]
-        }
-    }
+			"string_inputs": [
+				{
+					"input_id": "strBLOODTYPE",
+					"description": ""
+				},
+				{
+					"input_id": "strIQ",
+					"description": ""
+				},
+				{
+					"input_id": "strCHARACTER",
+					"description": ""
+				}
+			],
+			"color_inputs": [
+				{
+					"input_id": "col002",
+					"description": ""
+				},
+				{
+					"input_id": "col001",
+					"description": ""
+				}
+			],
+			"integer_inputs": [
+				{
+					"input_id": "intAGE",
+					"description": ""
+				}
+			],
+			"image_inputs": [
+				{
+					"input_id": "imgCHARACTER",
+					"description": ""
+				}
+			]
+		}
+	}
 }
-           
