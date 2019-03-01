@@ -29,7 +29,7 @@ class Generator extends Component {
     let newInputs = [];
 
     file.RASP_Object.inputs.string_inputs.forEach(inp => {
-      let newInput = this.createInput(inp.description, "STR");
+      let newInput = this.createInput(inp.description, inp.input_id, "STR");
       newInputs = [...newInputs, newInput];
     });
 
@@ -40,7 +40,7 @@ class Generator extends Component {
     let newInputs = [];
 
     file.RASP_Object.inputs.color_inputs.forEach(inp => {
-      let newInput = this.createInput(inp.description, "CLR");
+      let newInput = this.createInput(inp.description, inp.input_id,"CLR");
       newInputs = [...newInputs, newInput];
     });
 
@@ -51,7 +51,7 @@ class Generator extends Component {
     let newInputs = [];
 
     file.RASP_Object.inputs.image_inputs.forEach(inp => {
-      let newInput = this.createInput(inp.description, "IMG");
+      let newInput = this.createInput(inp.description, inp.input_id,"IMG");
       newInputs = [...newInputs, newInput];
     });
 
@@ -69,7 +69,7 @@ class Generator extends Component {
     return inputs;
   };
 
-  createInput = (labelText, inputType) => {
+  createInput = (labelText, input_id, inputType) => {
     let inputName = "";
     let newRandomNumeric = 0;
     let newRandomChar = "";
@@ -82,6 +82,7 @@ class Generator extends Component {
 
     let newInput = {
       labelText: labelText,
+      inputId: input_id,
       inputName: inputName,
       inputType: inputType
     };
@@ -156,7 +157,7 @@ class Generator extends Component {
     let imgData = [];
     this.state.inputs.forEach(inp => {
       if (inp.inputType === "IMG")
-        imgData = [...imgData, this.state[inp.inputName]];
+        	imgData = [...imgData, this.state[inp.inputName]];
     });
 
     let error = <div />;
@@ -168,6 +169,8 @@ class Generator extends Component {
         </div>
       );
     }
+
+    console.log(inputData);
 
     return (
       <div>

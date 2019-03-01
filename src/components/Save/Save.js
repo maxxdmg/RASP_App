@@ -17,13 +17,12 @@ class Save extends Component {
     let outputContent = "";
 
     this.props.inputData.forEach(data => {
-      if (data.inputType !== "IMG") {
         if (!data.content) {
           if (data.inputType === "CLR")
-            outputContent += data.labelText + ":#ffffff\n";
-          else outputContent += data.labelText + ":\n";
-        } else outputContent += data.labelText + ":" + data.content + "\n";
-      }
+            outputContent += data.inputId + ":#ffffff\n";
+          else outputContent += data.inputId + ":\n";
+        } else if (data.inputType === "IMG")  outputContent += data.inputId + data.content.name;
+        else outputContent += data.inputId + ":" + data.content + "\n";
     });
 
     zip.file("output.RASP", outputContent);

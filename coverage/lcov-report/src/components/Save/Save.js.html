@@ -35,9 +35,9 @@
         <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">78.95% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/19</span>
+        <span class='fraction'>15/18</span>
       </div>
     </div>
   </div>
@@ -93,17 +93,7 @@
 48
 49
 50
-51
-52
-53
-54
-55
-56
-57
-58</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+51</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,9 +103,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,9 +116,7 @@
 <span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,8 +127,6 @@
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,70 +141,65 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {Component} from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from "react";
 &nbsp;
-import JSZip from 'jszip';
-import FileSaver from 'file-saver';
+import JSZip from "jszip";
+import FileSaver from "file-saver";
 &nbsp;
 class Save extends Component {
-	state = {
+  state = {};
 &nbsp;
-	}
+  handleSave = <span class="fstat-no" title="function not covered" >zi</span>p =&gt; {
+<span class="cstat-no" title="statement not covered" >    zip.generateAsync({ type: "blob" }).then(<span class="fstat-no" title="function not covered" >co</span>ntent =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      FileSaver.saveAs(content, "RASP_Output.zip");</span>
+    });
+  };
 &nbsp;
+  render() {
+    let zip = new JSZip();
+    let outputContent = "";
 &nbsp;
-	handleSave = <span class="fstat-no" title="function not covered" >(z</span>ip) =&gt; {
-<span class="cstat-no" title="statement not covered" >		zip.generateAsync({type:"blob"})</span>
-		.then(<span class="fstat-no" title="function not covered" >co</span>ntent =&gt; {
-<span class="cstat-no" title="statement not covered" >		    FileSaver.saveAs(content, "RASP_Output.zip");</span>
-		});
-	}
+    this.props.inputData.forEach(data =&gt; {
+      if (data.inputType !== "IMG") {
+        if (!data.content) {
+          if (data.inputType === "CLR")
+            outputContent += data.labelText + ":#ffffff\n";
+          else outputContent += data.labelText + ":\n";
+        } else outputContent += data.labelText + ":" + data.content + "\n";
+      }
+    });
 &nbsp;
+    zip.file("output.RASP", outputContent);
 &nbsp;
-	render() {
-		let zip = new JSZip();
-		let outputContent = '';
+    if (this.props.imgData) {
+      let img = zip.folder("images");
+      this.props.imgData.forEach(val =&gt; {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (val) <span class="cstat-no" title="statement not covered" >img.file(val.name, val, { base64: true });</span>
+      });
+    }
 &nbsp;
-		this.props.inputData.forEach(data =&gt; {
-			if (data.inputType !== 'IMG'){
-				if (!data.content){
-					if (data.inputType === 'CLR')
-						outputContent += (data.labelText + ':#ffffff\n');
-					else
-						outputContent += (data.labelText + ':\n');
-				} else
-					outputContent += (data.labelText + ':' + data.content + '\n');
-			}
-		});
-&nbsp;
-		zip.file("output.RASP", outputContent);
-&nbsp;
-		if (this.props.imgValues) {
-			let img = zip.folder("images");
-			this.props.imgValues.forEach(val =&gt; {
-				<span class="missing-if-branch" title="if path not taken" >I</span>if (val)
-<span class="cstat-no" title="statement not covered" >					img.file(val.name, val, {base64: true});</span>
-			});
-		}
-&nbsp;
-&nbsp;
-		return (
-			&lt;button
-				disabled={!this.props.saveable}
-				className='saveButton'
-				onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.handleSave(zip)}</span>&gt;
-				Save
-			&lt;/button&gt;
-		);
-	}
+    return (
+      &lt;button
+        disabled={!this.props.saveable}
+        className="saveButton"
+        onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.handleSave(zip)}</span>
+      &gt;
+        Save
+      &lt;/button&gt;
+    );
+  }
 }
 &nbsp;
-export default Save;</pre></td></tr>
+export default Save;
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 26 2019 16:04:42 GMT-0500 (Eastern Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Feb 28 2019 18:09:28 GMT-0500 (Eastern Standard Time)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>
