@@ -1,29 +1,29 @@
 {
 	"RASP_Object": {
-		"id": "xxxyxxxx",
+		"id": "demoproject",
 		"inputs": {
 			"string_inputs": [
 				{
 					"input_id": "strBLOODTYPE",
-					"description": ""
+					"description": "bloodtype"
 				},
 				{
 					"input_id": "strIQ",
-					"description": ""
+					"description": "IQ"
 				},
 				{
 					"input_id": "strCHARACTER",
-					"description": ""
+					"description": "Character Name"
 				}
 			],
 			"color_inputs": [
 				{
 					"input_id": "col002",
-					"description": ""
+					"description": "Color 1"
 				},
 				{
 					"input_id": "col001",
-					"description": ""
+					"description": "Color 1"
 				}
 			],
 			"integer_inputs": [
@@ -35,7 +35,7 @@
 			"image_inputs": [
 				{
 					"input_id": "imgCHARACTER",
-					"description": ""
+					"description": "Character"
 				}
 			]
 		}

@@ -4,6 +4,7 @@ import Save from "../../components/Save/Save.js";
 import StringInput from "../../components/StringInput/StringInput.js";
 import ColorInput from "../../components/ColorInput/ColorInput.js";
 import ImageInput from "../../components/ImageInput/ImageInput.js";
+import instance from '../../axios-template.js';
 
 class Generator extends Component {
   state = {
@@ -14,47 +15,68 @@ class Generator extends Component {
   };
 
   componentDidMount() {
-    const inputs = this.loadFile(this.props.data);
-    let saveable;
+    this.getDataFile();
 
-    inputs.length ? (saveable = true) : (saveable = false);
+    if(this.props.data){
+       const inputs = this.loadFile(this.props.data);
+      let saveable;
 
-    this.setState({
-      saveable,
-      inputs
-    });
+      inputs.length ? (saveable = true) : (saveable = false);
+
+      this.setState({
+        saveable,
+        inputs
+      });
+    }
+  }
+
+  getDataFile = () => {
+    instance.get('/devtest.json')
+    .then(res => {
+      console.log(res.data);
+      let inputs = this.loadFile(res.data);
+      let saveable;
+      inputs.length ? (saveable = true) : (saveable = false);
+      this.setState({
+        saveable,
+        inputs
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
   getStringInputs = file => {
     let newInputs = [];
-
-    file.RASP_Object.inputs.string_inputs.forEach(inp => {
-      let newInput = this.createInput(inp.description, inp.input_id, "STR");
+    let strInputsObj = file.inputs.string_inputs;
+    Object.keys(strInputsObj).forEach(key => {
+      let newInput = this.createInput(strInputsObj[key], key, "STR");
       newInputs = [...newInputs, newInput];
     });
-
+    console.log(newInputs);
     return newInputs;
   };
 
   getColorInputs = file => {
     let newInputs = [];
-
-    file.RASP_Object.inputs.color_inputs.forEach(inp => {
-      let newInput = this.createInput(inp.description, inp.input_id,"CLR");
+    let clrInputsObj = file.inputs.color_inputs;
+    Object.keys(clrInputsObj).forEach(key => {
+      let newInput = this.createInput(clrInputsObj[key], key, "CLR");
       newInputs = [...newInputs, newInput];
     });
-
+    console.log(newInputs);
     return newInputs;
   };
 
   getImageInputs = file => {
     let newInputs = [];
-
-    file.RASP_Object.inputs.image_inputs.forEach(inp => {
-      let newInput = this.createInput(inp.description, inp.input_id,"IMG");
+    let imgInputsObj = file.inputs.image_inputs;
+    Object.keys(imgInputsObj).forEach(key => {
+      let newInput = this.createInput(imgInputsObj[key], key, "IMG");
       newInputs = [...newInputs, newInput];
     });
-
+    console.log(newInputs);
     return newInputs;
   };
 
