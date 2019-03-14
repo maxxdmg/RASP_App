@@ -17,9 +17,7 @@
     "test": "react-scripts test --coverage --verbose=false",
     "eject": "react-scripts eject",
     "format": "prettier --check \"src/**/*.js\"",
-    "flow": "flow",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "flow": "flow"
   },
   "browserslist": [
     ">0.2%",
@@ -34,7 +32,6 @@
     "eslint-plugin-prettier": "3.0.1",
     "flow-bin": "^0.93.0",
     "flow-coverage-report": "^0.6.1",
-    "gh-pages": "^2.0.1",
     "prettier": "^1.16.4",
     "react-docgen": "^4.0.1",
     "react-test-renderer": "^16.8.3",
