@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-	baseURL: 'https://raspdb.firebaseio.com/'
+	baseURL: 'https://raspio.herokuapp.com'
 });
 
 export default instance;

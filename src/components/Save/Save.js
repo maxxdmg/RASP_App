@@ -16,6 +16,8 @@ class Save extends Component {
     let zip = new JSZip();
     let outputContent = "";
 
+    outputContent += this.props.id + '\n';
+
     this.props.inputData.forEach(data => {
         if (!data.content) {
           if (data.inputType === "CLR")

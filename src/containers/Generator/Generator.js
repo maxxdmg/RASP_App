@@ -8,6 +8,7 @@ import instance from '../../axios-template.js';
 
 class Generator extends Component {
   state = {
+    id: '',
     saveable: false,
     itemCount: 0,
     inputs: [],
@@ -31,13 +32,15 @@ class Generator extends Component {
   }
 
   getDataFile = () => {
-    instance.get('/devtest.json')
+    instance.get('/devtest')
     .then(res => {
-      console.log(res.data);
+      console.log("= RES DATA =")
+      let id = Object.keys(res.data)[0];
       let inputs = this.loadFile(res.data);
       let saveable;
       inputs.length ? (saveable = true) : (saveable = false);
       this.setState({
+        id,
         saveable,
         inputs
       });
@@ -49,7 +52,7 @@ class Generator extends Component {
 
   getStringInputs = file => {
     let newInputs = [];
-    let strInputsObj = file.inputs.string_inputs;
+    let strInputsObj = file.devtest.string_inputs;
     Object.keys(strInputsObj).forEach(key => {
       let newInput = this.createInput(strInputsObj[key], key, "STR");
       newInputs = [...newInputs, newInput];
@@ -60,7 +63,7 @@ class Generator extends Component {
 
   getColorInputs = file => {
     let newInputs = [];
-    let clrInputsObj = file.inputs.color_inputs;
+    let clrInputsObj = file.devtest.color_inputs;
     Object.keys(clrInputsObj).forEach(key => {
       let newInput = this.createInput(clrInputsObj[key], key, "CLR");
       newInputs = [...newInputs, newInput];
@@ -71,7 +74,7 @@ class Generator extends Component {
 
   getImageInputs = file => {
     let newInputs = [];
-    let imgInputsObj = file.inputs.image_inputs;
+    let imgInputsObj = file.devtest.image_inputs;
     Object.keys(imgInputsObj).forEach(key => {
       let newInput = this.createInput(imgInputsObj[key], key, "IMG");
       newInputs = [...newInputs, newInput];
@@ -192,13 +195,17 @@ class Generator extends Component {
       );
     }
 
-    console.log(inputData);
+    let id = <div />;
+    if (this.state.id)
+      id = <h3>{this.state.id}</h3>;
 
     return (
       <div>
         {error}
+        {id}
         {inputs}
         <Save
+          id={this.state.id}
           saveable={this.state.saveable}
           inputData={inputData}
           imgData={imgData}
