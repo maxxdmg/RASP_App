@@ -197,7 +197,7 @@ class Generator extends Component {
 
     let id = <div />;
     if (this.state.id)
-      id = <h3>{this.state.id}</h3>;
+      id = <h3 className={"pl-3 pt-3 pb-1"}>template: {this.state.id}</h3>;
 
     return (
       <div>

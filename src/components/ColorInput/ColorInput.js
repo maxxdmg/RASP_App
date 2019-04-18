@@ -5,17 +5,17 @@ const ColorInput = props => {
   if (props.textVal) text = props.textVal;
 
   return (
-    <div className="item-container">
-      <label className="item-label">{props.labelText}</label>
-      <div className="item-input-color-container">
+    <div 
+      style={{border: '1px solid black', overflow: 'hidden'}}
+      className="w-25 row ml-3 mb-2 p-3">
+      <label style={{fontSize: '20px'}} className='col-12'>{props.labelText}</label>
         <input
+          style={{width: '2vw', height: '2vw', border: 'none'}}
           onChange={props.changed}
           name={props.inputName}
           type="color"
-          className="item-input-color"
-        />
-        <h4 className="item-input-color-text">{text}</h4>
-      </div>
+          className="ml-3 p-0 col-3" />
+        <h4 style={{width: '1vw', fontWeight: 'bold'}} className="m-0 pl-2 col-4">{text}</h4>
     </div>
   );
 };

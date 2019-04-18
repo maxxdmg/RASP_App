@@ -5,14 +5,17 @@ const StringInput = props => {
   if (props.val) val = props.val;
 
   return (
-    <div className="item-container">
-      <label className="item-label">{props.labelText}</label>
-      <input
-        onChange={props.changed}
-        name={props.inputName}
-        value={val}
-        className="item-input"
-      />
+    <div 
+      style={{border: '1px solid black', overflow: 'hidden'}}
+      className="w-25 row ml-3 mb-2 p-3">
+      <label style={{fontSize: '20px'}} className='col-12'>{props.labelText}</label>
+      <div className='input-group'>
+        <input
+          onChange={props.changed}
+          name={props.inputName}
+          value={val}
+          className="form-control"/>
+      </div>
     </div>
   );
 };

@@ -39,7 +39,8 @@ class Save extends Component {
     return (
       <button
         disabled={!this.props.saveable}
-        className="saveButton"
+        style={{width: '5vw', height: '3vw', borderRadius: '7.5%', marginLeft: '10vw'}}
+        className="btn btn-outline-primary"
         onClick={() => this.handleSave(zip)}
       >
         Save
