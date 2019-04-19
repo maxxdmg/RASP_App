@@ -4,13 +4,13 @@ import Header from "./components/Header/Header.js";
 import "./App.css";
 
 class App extends Component {
-	render() {
-		return(
-			<div>
-				<Header />
-				<Generator />
-			</div>
-			);
+  render() {
+    return (
+      <div>
+        <Header />
+        <Generator />
+      </div>
+    );
   }
 }
 

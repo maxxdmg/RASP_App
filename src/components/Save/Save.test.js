@@ -1,6 +1,4 @@
 import React from "react";
-import JSZip from "jszip";
-import FileSaver from "file-saver";
 import Enzyme, { mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
@@ -32,7 +30,7 @@ test("Save button is disabled when the prop saveable is false and not disabled w
     }
   ];
   const wrapper = mount(<Save inputData={test_data} saveable={false} />);
-  const wrapper2 = mount(<Save inputData={test_data} saveable={true} />);
+  const wrapper2 = mount(<Save inputData={test_data} saveable />);
 
   expect(wrapper.find("button").props().disabled).toEqual(true);
   expect(wrapper2.find("button").props().disabled).toEqual(false);
@@ -42,7 +40,7 @@ test("Save button is disabled when the prop saveable is false and not disabled w
 test('createInput method creates a new input with the correct data', () => {
 	const wrapper = mount(<Generator data={Data} />);
 	let inputs = wrapper.instance().loadFile(Data);
-	
+
 	expect(inputs.length).toEqual(5);
 });
 */

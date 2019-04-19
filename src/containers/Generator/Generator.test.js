@@ -30,14 +30,14 @@ test("createInput method creates a new input with the correct data", () => {
 
 test("createInput method creates a new input with the correct data", () => {
   const wrapper = mount(<Generator data={Data} />);
-  let inputs = wrapper.instance().loadFile(Data);
+  const inputs = wrapper.instance().loadFile(Data);
 
   expect(inputs.length).toEqual(5);
 });
 
 test("getStringInputs method returns correct string inputs within data file", () => {
   const wrapper = mount(<Generator data={Data} />);
-  let stringInputs = wrapper.instance().getStringInputs(Data);
+  const stringInputs = wrapper.instance().getStringInputs(Data);
 
   expect(stringInputs.length).toEqual(3);
   expect(stringInputs[0].labelText).toEqual("Name");
@@ -46,7 +46,7 @@ test("getStringInputs method returns correct string inputs within data file", ()
 
 test("getColorInputs method returns correct color inputs within data file", () => {
   const wrapper = mount(<Generator data={Data} />);
-  let colorInputs = wrapper.instance().getColorInputs(Data);
+  const colorInputs = wrapper.instance().getColorInputs(Data);
 
   expect(colorInputs.length).toEqual(1);
   expect(colorInputs[0].labelText).toEqual("Color");
@@ -55,7 +55,7 @@ test("getColorInputs method returns correct color inputs within data file", () =
 
 test("getImageInputs method returns correct image inputs within data file", () => {
   const wrapper = mount(<Generator data={Data} />);
-  let imageInputs = wrapper.instance().getImageInputs(Data);
+  const imageInputs = wrapper.instance().getImageInputs(Data);
 
   expect(imageInputs.length).toEqual(1);
   expect(imageInputs[0].labelText).toEqual("Pic");

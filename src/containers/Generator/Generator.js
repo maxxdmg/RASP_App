@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 
-import Save from "../../components/Save/Save.js";
-import StringInput from "../../components/StringInput/StringInput.js";
-import ColorInput from "../../components/ColorInput/ColorInput.js";
-import ImageInput from "../../components/ImageInput/ImageInput.js";
-import instance from '../../axios-template.js';
+import Save from "../../components/Save/Save";
+import StringInput from "../../components/StringInput/StringInput";
+import ColorInput from "../../components/ColorInput/ColorInput";
+import ImageInput from "../../components/ImageInput/ImageInput";
+import instance from "../../axios-template.js";
 
 class Generator extends Component {
   state = {
-    id: '',
+    id: "",
     saveable: false,
     itemCount: 0,
     inputs: [],
@@ -18,8 +18,8 @@ class Generator extends Component {
   componentDidMount() {
     this.getDataFile();
 
-    if(this.props.data){
-       const inputs = this.loadFile(this.props.data);
+    if (this.props.data) {
+      const inputs = this.loadFile(this.props.data);
       let saveable;
 
       inputs.length ? (saveable = true) : (saveable = false);
@@ -32,23 +32,24 @@ class Generator extends Component {
   }
 
   getDataFile = () => {
-    instance.get('/devtest')
-    .then(res => {
-      console.log("= RES DATA =")
-      let id = Object.keys(res.data)[0];
-      let inputs = this.loadFile(res.data);
-      let saveable;
-      inputs.length ? (saveable = true) : (saveable = false);
-      this.setState({
-        id,
-        saveable,
-        inputs
+    instance
+      .get("/devtest")
+      .then(res => {
+        console.log("= RES DATA =");
+        let id = Object.keys(res.data)[0];
+        let inputs = this.loadFile(res.data);
+        let saveable;
+        inputs.length ? (saveable = true) : (saveable = false);
+        this.setState({
+          id,
+          saveable,
+          inputs
+        });
+      })
+      .catch(err => {
+        console.log(err);
       });
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
+  };
 
   getStringInputs = file => {
     let newInputs = [];
@@ -182,7 +183,7 @@ class Generator extends Component {
     let imgData = [];
     this.state.inputs.forEach(inp => {
       if (inp.inputType === "IMG")
-        	imgData = [...imgData, this.state[inp.inputName]];
+        imgData = [...imgData, this.state[inp.inputName]];
     });
 
     let error = <div />;
